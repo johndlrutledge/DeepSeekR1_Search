@@ -43,7 +43,8 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Access at http://localhost:7860 (opens automatically)
+- Access at http://localhost:7860 (opens automatically)
+- Set "share=True" at the end of `app.py` to enable access from a unique temporary cloudfare tunnel URL.
 
 
 ## 📄 License

@@ -328,7 +328,7 @@ background-image: url("https://picsum.photos/seed/picsum/200/300");
 """
 
 
-with gr.Blocks(title="Pepe's Bong House", css=css, theme="dark", analytics_enabled=False) as demo:
+with gr.Blocks(title="Deepseek R1", css=css, theme="dark", analytics_enabled=False) as demo:
     chat_history = gr.State([])
     
     with gr.Column(elem_id="header"):

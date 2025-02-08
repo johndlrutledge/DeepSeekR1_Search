@@ -21,23 +21,14 @@ This project leverages the DeepSeek R1 7B parameter language model along with Du
 - **Advanced AI Processing**: Utilizes DeepSeek R1 (7B parameter model) for high-quality responses
 - **Real-time Web Search**: Integrated DuckDuckGo search for up-to-date information
 - **Source Attribution**: Automatic citation of web sources with titles, dates, and snippets
-- **Rich Formatting**: Markdown-formatted responses for clear presentation
 - **Performance Optimized**:
-  - GPU acceleration support
-  - Efficient memory management
-  - Disk caching for faster responses
-- **Modern Interface**:
-  - Dark theme design
-  - Real-time status updates
-  - Mobile-responsive layout
-  - Expandable chat history
-  - One-click example questions
+  - Capable of running on consumer hardware locally
 
 ## 🛠️ System Requirements
 
 - **Python**: 3.8 or higher
 - **GPU**: CUDA-capable GPU (strongly recommended)
-- **RAM**: Minimum 16GB (32GB recommended)
+- **RAM**: 32GB recommended (if not using GPU)
 - **Storage**: 20GB free space for model and cache
 - **OS**: Windows 10/11, Linux, or macOS
 
@@ -45,8 +36,8 @@ This project leverages the DeepSeek R1 7B parameter language model along with Du
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/deepseek-search-assistant.git
-cd deepseek-search-assistant
+git clone https://github.com/johndlrutledge/DeepSeekR1_Search.git
+cd DeepSeekR1_Search
 ```
 
 2. **Set Up Python Environment**
@@ -70,48 +61,8 @@ python app.py
 
 2. **Access the Interface**
 - The web interface will automatically open in your default browser
-- Default address: http://localhost:7860
+- Default address: http://localhost:7860 (gradio will also allow you to access the interface via a public URL if share=True is set at the end of the app.py file)
 
-3. **Example Queries**:
-- "What are the latest developments in quantum computing?"
-- "Explain the process of photosynthesis"
-- "What are the economic impacts of climate change?"
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-1. **CUDA Out of Memory**
-   - Close other GPU-intensive applications
-   - Reduce batch size in config
-   - Try running on CPU mode
-
-2. **Slow Response Times**
-   - Check internet connection
-   - Clear cache directory
-   - Ensure GPU drivers are up to date
-
-3. **Installation Problems**
-   - Update pip: `python -m pip install --upgrade pip`
-   - Install Visual C++ Build Tools (Windows)
-   - Check CUDA compatibility
-
-## 💻 Development
-
-### Setting Up Development Environment
-
-1. Fork the repository
-2. Create a feature branch
-3. Install development dependencies:
-```bash
-pip install -r requirements-dev.txt
-```
-
-### Code Style
-- Follow PEP 8 guidelines
-- Use type hints
-- Add docstrings for new functions
-- Write unit tests for new features
 
 ## 📄 License
 

@@ -13,8 +13,8 @@ from diskcache import Cache
 cache = Cache("cache_dir")
 if not os.path.exists('cache_dir'): os.makedirs('cache_dir')
 
-torch.cuda.empty_cache()
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+if device.type == "cuda": torch.cuda.empty_cache()
 model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
 tokenizer.pad_token = tokenizer.eos_token
@@ -25,12 +25,11 @@ EXAMPLES=["Evaluate the derivitive of x^2 + 2x + 1", "What is the capital of Fra
 def init_models():
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        device_map="cuda",
-        
+        device_map=device,
         low_cpu_mem_usage=True,
         torch_dtype=torch.float16
     )
-    return model.eval().cuda()
+    return model.eval().to(device)
 
 @cache.memoize()
 def get_web_results(query, max_results=5):  
@@ -102,7 +101,7 @@ def generate_answer(prompt):
             break
     outputs = max(answers, key=len)
     del model, inputs
-    torch.cuda.empty_cache()
+    if device.type == "cuda": torch.cuda.empty_cache()
     collect()
     return outputs
 
@@ -309,22 +308,6 @@ background-image: url("https://picsum.photos/seed/picsum/200/300");
     border-radius: 8px !important;
     margin-top: 1rem !important;
 }
-
-.voice-selector {
-    margin-top: 1rem;
-    background: #2c2d30;
-    border-radius: 8px;
-    padding: 0.5rem;
-}
-
-.voice-selector select {
-    background: #3a3b3e !important;
-    color: white !important;
-    border: 1px solid #4a4b4e !important;
-}
-background-image: url("https://picsum.photos/seed/picsum/200/300");
-    background-repeat: no-repeat;
-    background-size: cover;
 """
 
 
